@@ -1,12 +1,24 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Placeholder from './placeholder';
+import Randomcolor from './Randomcolor';
 
 const BasicsContext = React.createContext();
 const ConfigContext = React.createContext();
 
 const Picload = ({ src, placeholder, config, className, style, alt }) => {
-  let [option, setOption] = useState("placeholder");
-  let [randomColorAssistant, setRandomColorAssistant] = useState("any");
+
+  let [finallDom, setFinallDom] = useState(null);
+
+  let option = "placeholder";
+  const setOption = value => {
+    option = value;
+  }
+
+  let randomColorAssistant = "any";
+  const setRandomColorAssistant = value => {
+    randomColorAssistant = value;
+  }
+
   let [colorAssistant, setColorAssistant] = useState("#fff");
   let [progressAssistant, setProgressAssistant] = useState("circles");
   let [progressColor, setProgressColor] = useState("#f1f1f1");
@@ -48,6 +60,10 @@ const Picload = ({ src, placeholder, config, className, style, alt }) => {
     } else {
       setOption("placeholder");
     }
+
+    { option === "placeholder" && setFinallDom(<Placeholder placeholder={placeholder} />) }
+    { option === "randomColor" && setFinallDom(<Randomcolor randomColorAssistant={randomColorAssistant} />) }
+
   }, [])
 
 
@@ -55,7 +71,7 @@ const Picload = ({ src, placeholder, config, className, style, alt }) => {
     <>
       <BasicsContext.Provider value={{ className, style, src, alt }}>
         <ConfigContext.Provider value={config}>
-          {option === "placeholder" && <Placeholder placeholder={placeholder} />}
+          {finallDom}
         </ConfigContext.Provider>
       </BasicsContext.Provider>
     </>
