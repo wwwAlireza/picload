@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Placeholder from './placeholder';
 import Randomcolor from './Randomcolor';
+import Color from './Color';
 
 const BasicsContext = React.createContext();
 const ConfigContext = React.createContext();
@@ -18,8 +19,11 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
   const setRandomColorAssistant = value => {
     randomColorAssistant = value;
   }
+  let colorAssistant = "#fff";
+  const setColorAssistant = value => {
+    colorAssistant = value;
+  }
 
-  let [colorAssistant, setColorAssistant] = useState("#fff");
   let [progressAssistant, setProgressAssistant] = useState("circles");
   let [progressColor, setProgressColor] = useState("#f1f1f1");
   let [progressBg, setProgressBg] = useState("#212526");
@@ -63,6 +67,7 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
 
     { option === "placeholder" && setFinallDom(<Placeholder placeholder={placeholder} />) }
     { option === "randomColor" && setFinallDom(<Randomcolor randomColorAssistant={randomColorAssistant} />) }
+    { option === "color" && setFinallDom(<Color colorAssistant={colorAssistant} />) }
 
   }, [])
 
