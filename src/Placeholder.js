@@ -4,7 +4,7 @@ import usePlaceholder from './hooks/usePlaceholder';
 
 const Placeholder = props => {
     const Basics = useContext(BasicsContext);
-    let { className, style, alt, src } = Basics;
+    let { className, style, alt, src, cref } = Basics;
     let loadedSrc = usePlaceholder(src, props.placeholder);
     let domStyle = style;
     if (!domStyle) {
@@ -20,7 +20,7 @@ const Placeholder = props => {
     }
     return (
         <>
-            <img className={className} style={domStyle} alt={alt} src={loadedSrc} />
+            <img className={className} style={domStyle} alt={alt} src={loadedSrc} ref={cref} />
         </>
     )
 };
