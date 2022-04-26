@@ -8,23 +8,19 @@ const Placeholder = props => {
     let loadedSrc = usePlaceholder(src, props.placeholder);
     let domStyle = style;
     if (!domStyle) {
-        domStyle = { width: "100%", height: "100%" };
+        domStyle = { width: "100%", height: "100%", borderRadius: "inherit" };
     } else {
         if (!domStyle.width) {
             domStyle.width = "100%";
         } if (!domStyle.height) {
             domStyle.height = "100%";
+        } if (!domStyle.borderRadius) {
+            domStyle.borderRadius = "inherit";
         }
     }
-
-
-    // useEffect(() => {
-    //     console.log(true);
-    // }, [])
-
     return (
         <>
-            <img className={className} style={style} alt={alt} src={loadedSrc} />
+            <img className={className} style={domStyle} alt={alt} src={loadedSrc} />
         </>
     )
 };

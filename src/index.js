@@ -5,7 +5,7 @@ import Randomcolor from './Randomcolor';
 const BasicsContext = React.createContext();
 const ConfigContext = React.createContext();
 
-const Picload = ({ src, placeholder, config, className, style, alt }) => {
+const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
 
   let [finallDom, setFinallDom] = useState(null);
 
@@ -69,7 +69,7 @@ const Picload = ({ src, placeholder, config, className, style, alt }) => {
 
   return (
     <>
-      <BasicsContext.Provider value={{ className, style, src, alt }}>
+      <BasicsContext.Provider value={{ className, style, src, alt, cref }}>
         <ConfigContext.Provider value={config}>
           {finallDom}
         </ConfigContext.Provider>

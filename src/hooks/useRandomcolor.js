@@ -33,23 +33,26 @@ const useRandomcolor = (Basics, colorRange) => {
     let selectedColor = getSelected(colorRange);
     useEffect(() => {
 
-        const { src, className, alt, style } = Basics;
+        const { src, className, alt, style, cref } = Basics;
         let domStyle = style;
         let imageToLoad = new Image();
         imageToLoad.src = src;
 
         if (!domStyle) {
-            domStyle = { width: "100%", height: "100%" };
+            domStyle = { width: "100%", height: "100%", borderRadius: "inherit" };
         } else {
             if (!domStyle.width) {
                 domStyle.width = "100%";
             } if (!domStyle.height) {
                 domStyle.height = "100%";
+            } if (!domStyle.borderRadius) {
+                domStyle.borderRadius = "inherit"
             }
         }
 
+        setActiveDom(<div style={{ ...domStyle, background: selectedColor }}></div>)
         imageToLoad.addEventListener("load", () => {
-            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} />)
+            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} />)
         });
 
     }, [])
