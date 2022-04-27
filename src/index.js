@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Placeholder from './placeholder';
 import Randomcolor from './Randomcolor';
 import Color from './Color';
+import Progress from "./Progress";
 
 const BasicsContext = React.createContext();
 const ConfigContext = React.createContext();
@@ -15,22 +16,38 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
     option = value;
   }
 
-  let randomColorAssistant = "any";
+  let _randomColorAssistant = "any";
   const setRandomColorAssistant = value => {
-    randomColorAssistant = value;
+    _randomColorAssistant = value;
   }
-  let colorAssistant = "#fff";
+  let _colorAssistant = "#fff";
   const setColorAssistant = value => {
-    colorAssistant = value;
+    _colorAssistant = value;
+  }
+  let _progressAssistant = "circles";
+  const setProgressAssistant = value => {
+    _progressAssistant = value;
   }
 
-  let [progressAssistant, setProgressAssistant] = useState("circles");
-  let [progressColor, setProgressColor] = useState("#f1f1f1");
-  let [progressBg, setProgressBg] = useState("#212526");
+  let _progressColor = "#f1f1f1";
+  const setProgressColor = value => {
+    _progressColor = value;
+  }
+
+  let _progressBg = "#0d1117";
+  const setProgressBg = value => {
+    _progressBg = value;
+  }
+
+  let _progressStyle = {};
+  const setProgressStyle = value => {
+    console.log(value);
+    _progressStyle = value;
+  }
 
   useEffect(() => {
     if (config) {
-      let { randomColor, color, progress, progressColor } = config;
+      let { randomColor, color, progress, progressColor, progressBg, progressStyle } = config;
       // random color
       if (randomColor) {
         setOption("randomColor");
@@ -47,11 +64,14 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
         if (progress === "round" || progress === "rings" || progress === "wait" || progress === "circles" || progress === "round-corcles") {
           setProgressAssistant(progress);
         }
-        if (color) {
-          setProgressBg(color);
+        if (progressBg) {
+          setProgressBg(progressBg);
         }
         if (progressColor) {
           setProgressColor(progressColor);
+        }
+        if (progressStyle) {
+          setProgressStyle(progressStyle);
         }
       }
 
@@ -66,8 +86,9 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
     }
 
     { option === "placeholder" && setFinallDom(<Placeholder placeholder={placeholder} />) }
-    { option === "randomColor" && setFinallDom(<Randomcolor randomColorAssistant={randomColorAssistant} />) }
-    { option === "color" && setFinallDom(<Color colorAssistant={colorAssistant} />) }
+    { option === "randomColor" && setFinallDom(<Randomcolor randomColorAssistant={_randomColorAssistant} />) }
+    { option === "color" && setFinallDom(<Color colorAssistant={_colorAssistant} />) }
+    { option === "progress" && setFinallDom(<Progress progressAssistant={_progressAssistant} progressColor={_progressColor} progressBg={_progressBg} progressStyle={_progressStyle} />) }
 
   }, [])
 

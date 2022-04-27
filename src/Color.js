@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useSatet } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import useColor from "./hooks/useColor";
 import { BasicsContext } from '.';
 
