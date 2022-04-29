@@ -36,6 +36,7 @@ Add this library to your React project and enjoy
     - [alt](#b-alt)
     - [ref](#b-ref)
     - [loading](#b-loading)
+- [Sample](#sample)
     
 ## Install
 
@@ -238,3 +239,7 @@ const myImg = React.useRef(null)
 ```jsx
 <Picload ... loading='lazy' />
 ```
+<hr>
+
+### Sample
+![](http://upir.ir/images/3nyke7ypynttp63xwxx3.gif)
