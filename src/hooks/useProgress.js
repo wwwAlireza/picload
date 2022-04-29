@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 
 const useProgress = (Basics, progressType, progressColor, progressBg, progressStyle) => {
+    // basics processing
     const { className, style, src, alt, cref } = Basics;
     let [activeDom, setActiveDom] = useState(null);
     let domStyle = style | {};
@@ -18,20 +19,46 @@ const useProgress = (Basics, progressType, progressColor, progressBg, progressSt
     domStyle.display = "grid";
     domStyle.placeItems = "center";
 
-    const CirclesDiv = () => {
-        return <div style={{ background: progressColor }}></div>
+    // set progress color
+    const setProgressColor = (cssVar) => {
+        document.documentElement.style.setProperty(cssVar, progressColor)
     }
 
+    // detect progress
     let selectedProgress = "";
+    const setSelectedProgress = dom => {
+        selectedProgress = <div style={{ ...domStyle, background: progressBg }}>{dom}</div>
+    }
     const selectProgress = progress => {
         switch (progress) {
             case "circles":
-                selectedProgress = <div style={{ ...domStyle, background: progressBg }}><div className="picload-progress-circles" style={progressStyle}><CirclesDiv />  <CirclesDiv /> <CirclesDiv /> <CirclesDiv /> </div></div>
+                setSelectedProgress(<div className="picload-progress-circles" style={progressStyle}><div></div><div></div><div></div><div></div> </div>);
+                setProgressColor('--picload-progress-circles-color');
+                break;
+            case "ring":
+                setSelectedProgress(<div className="picload-progress-ring" style={{ ...progressStyle }}></div>);
+                setProgressColor('--picload-progress-ring-color');
+                break;
+            case "ripple":
+                setSelectedProgress(<div className="picload-progress-ripple" style={{ ...progressStyle }}><div></div><div></div> </div>);
+                setProgressColor('--picload-progress-ripple-color')
+                break;
+            case "spinner":
+                setSelectedProgress(<div className="picload-progress-spinner" style={{ ...progressStyle }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
+                setProgressColor('--picload-progress-spinner-color');
+                break;
+            case "roller":
+                setSelectedProgress(<div className="piclaod-progress-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>)
+                setProgressColor('--picload-progress-roller-color')
+                break;
+            default:
+                setSelectedProgress(progress);
                 break;
         }
     }
     selectProgress(progressType);
 
+    // mount
     useEffect(() => {
         let imageToLoad = new Image();
         imageToLoad.src = src;

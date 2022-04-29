@@ -61,7 +61,9 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
       // progress
       else if (progress) {
         setOption("progress");
-        if (progress === "round" || progress === "rings" || progress === "wait" || progress === "circles" || progress === "round-corcles") {
+        if (progress === "ring" || progress === "ripple" || progress === "spinner" || progress === "circles" || progress === "roller") {
+          setProgressAssistant(progress);
+        } else if (typeof progress === 'object') {
           setProgressAssistant(progress);
         }
         if (progressBg) {
