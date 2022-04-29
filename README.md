@@ -1,9 +1,16 @@
 
 # Picload
+[![NPM](https://img.shields.io/npm/v/picload.svg)](https://www.npmjs.com/package/picload) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Make the wait sweeter for the user
 
-[![NPM](https://img.shields.io/npm/v/picload.svg)](https://www.npmjs.com/package/picload) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+When your website's photos are loading, what is displayed instead? If your answer is "nothing" I must say this is a disaster! Because this may bore the user and leave a bad ui & ux for you. <br>
+what's the solution? <br>
+Turns out, use Picload .
+In fact, before loading images, Picload renders things instead to make your ui more beautiful and increase user patience. <br>
+Now you know what Picload does? <br>
+Add this library to your React project and enjoy
+
 ## Docs
  - [installation](#install)
  - [options](#options)
@@ -24,10 +31,11 @@
         - [ProgressStyle](#progress-style)
         - [custom](#custom-progress)
 - [Basic attributes](#basic-attributes)
-    - [style](#style)
-    - [className](#class-name)
-    - [alt](#alt)
-    - [ref](#ref)
+    - [style](#b-style)
+    - [className](#b-class-name)
+    - [alt](#b-alt)
+    - [ref](#b-ref)
+    - [loading](#b-loading)
     
 ## Install
 
@@ -196,4 +204,37 @@ const myConfig = {
   progress: <myProgress />;
 }
 <Picload src={Mountain} config={myConfig}/>
+```
+## Basic attributes
+In picload, it is possible to use all basic attributes. These attributes are appended directly to the (img)
+> You do not need to define this basic information in (config)
+<a id='b-style'></a>
+- **style**
+```jsx
+<Picload ... style={ {transform: 'rotate(5deg)'} } />
+```
+<a id='b-class-name'></a>
+- **className**
+```jsx
+<Picload ... className='fw-bold bg-danger' />
+```
+<a id='b-alt'></a>
+- **alt**
+```jsx
+<Picload ... alt='image alt' />
+```
+<a id='b-ref'></a>
+- **ref** <br>
+If you have an (Ref) and you want to link it to your image tag, you have to give it to (cref) in Picload
+> Why cref? Because if we want to give it the same name as ref to the Picload component, we will get an error. Because React does not accept giving a ref to the component. So here the picload will be a ref transfer
+
+```jsx
+const myImg = React.useRef(null)
+
+<Picload ... cref={myImg} />
+```
+<a id='b-loading'></a>
+- **loading** <br>
+```jsx
+<Picload ... loading='lazy' />
 ```
