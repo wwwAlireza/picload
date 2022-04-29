@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 
 const useProgress = (Basics, progressType, progressColor, progressBg, progressStyle) => {
     // basics processing
-    const { className, style, src, alt, cref } = Basics;
+    const { className, style, src, alt, cref, loading } = Basics;
     let [activeDom, setActiveDom] = useState(null);
     let domStyle = style | {};
     if (!domStyle) {
@@ -65,7 +65,7 @@ const useProgress = (Basics, progressType, progressColor, progressBg, progressSt
 
         setActiveDom(selectedProgress);
         imageToLoad.addEventListener("load", () => {
-            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} />)
+            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} loading={loading} />)
         })
     }, [])
     return activeDom;

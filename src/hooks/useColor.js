@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const useColor = (Basics, color) => {
-    const { src, style, className, cref, alt } = Basics;
+    const { src, style, className, cref, alt, loading } = Basics;
     let domStyle = style;
     if (!domStyle) {
         domStyle = { width: "100%", height: "100%", borderRadius: "inherit" };
@@ -20,7 +20,7 @@ const useColor = (Basics, color) => {
         imageToLoad.src = src;
         setActiveDom(<div style={{ ...domStyle, background: color }}></div>)
         imageToLoad.addEventListener("load", () => {
-            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} />)
+            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} loading={loading} />)
         })
     }, [])
     return activeDom;

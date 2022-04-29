@@ -33,7 +33,7 @@ const useRandomcolor = (Basics, colorRange) => {
     let selectedColor = getSelected(colorRange);
     useEffect(() => {
 
-        const { src, className, alt, style, cref } = Basics;
+        const { src, className, alt, style, cref, loading } = Basics;
         let domStyle = style;
         let imageToLoad = new Image();
         imageToLoad.src = src;
@@ -52,7 +52,7 @@ const useRandomcolor = (Basics, colorRange) => {
 
         setActiveDom(<div style={{ ...domStyle, background: selectedColor }}></div>)
         imageToLoad.addEventListener("load", () => {
-            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} />)
+            setActiveDom(<img src={src} className={className} alt={alt} style={domStyle} ref={cref} loading={loading} />)
         });
 
     }, [])

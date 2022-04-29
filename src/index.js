@@ -7,7 +7,7 @@ import Progress from "./Progress";
 const BasicsContext = React.createContext();
 const ConfigContext = React.createContext();
 
-const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
+const Picload = ({ src, placeholder, config, className, style, alt, cref, loading }) => {
 
   let [finallDom, setFinallDom] = useState(null);
 
@@ -97,7 +97,7 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
 
   return (
     <>
-      <BasicsContext.Provider value={{ className, style, src, alt, cref }}>
+      <BasicsContext.Provider value={{ className, style, src, alt, cref, loading }}>
         <ConfigContext.Provider value={config}>
           {finallDom}
         </ConfigContext.Provider>
