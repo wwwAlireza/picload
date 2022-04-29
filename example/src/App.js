@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
-import challenger from "./images/test.jpg";
-// import Loading from './Loading';
+import Loading from './Loading';
 import linux from "./images/linux.jpeg";
+import linux_min from "./images/linux_min.jpeg";
 import Picload from 'picload'
 import "picload/dist/progress-circles.css"
 import "picload/dist/progress-ring.css"
@@ -13,8 +13,9 @@ const App = () => {
   return (
     <Fragment>
       <div style={{ width: '100px', height: '100px', borderRadius: '50%' }}>
-        {/* <Picload src={linux} config={{ progress: "ripple", progressColor: "yellow", progressBg: "red" }} /> */}
-        <Picload src={linux} placeholder={challenger} alt="error" className="test" />
+        <Picload src={linux} config={{ progress: "ripple", progressColor: "yellow", progressBg: "red" }} />
+        <Picload src={linux} placeholder={linux_min} alt="error" className="test" />
+        <Picload src={linux} config={{ progress: <Loading /> }} />
       </div>
     </Fragment>
   )
