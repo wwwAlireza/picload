@@ -106,4 +106,5 @@ const Picload = ({ src, placeholder, config, className, style, alt, cref }) => {
   )
 };
 
-export { Picload, BasicsContext, ConfigContext };
+export { BasicsContext, ConfigContext };
+export default Picload;

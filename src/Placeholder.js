@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { BasicsContext } from '.';
 import usePlaceholder from './hooks/usePlaceholder';
 
@@ -17,7 +17,8 @@ const Placeholder = props => {
         } if (!domStyle.borderRadius) {
             domStyle.borderRadius = "inherit";
         }
-    }
+    };
+
     return (
         <>
             <img className={className} style={domStyle} alt={alt} src={loadedSrc} ref={cref} />
