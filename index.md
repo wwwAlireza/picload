@@ -208,18 +208,22 @@ const myConfig = {
 ## Basic attributes
 In picload, it is possible to use all basic attributes. These attributes are appended directly to the (img)
 > You do not need to define this basic information in (config)
+
 <a id='b-style'></a>
 - **style**
+
 ```jsx
 <Picload ... style={ {transform: 'rotate(5deg)'} } />
 ```
 <a id='b-class-name'></a>
 - **className**
+
 ```jsx
 <Picload ... className='fw-bold bg-danger' />
 ```
 <a id='b-alt'></a>
 - **alt**
+
 ```jsx
 <Picload ... alt='image alt' />
 ```
@@ -235,6 +239,7 @@ const myImg = React.useRef(null)
 ```
 <a id='b-loading'></a>
 - **loading** <br>
+
 ```jsx
 <Picload ... loading='lazy' />
 ```
