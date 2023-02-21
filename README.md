@@ -1,4 +1,4 @@
-<img src='http://upir.ir/images/nrk77wnmynm7bk4cfpgw.png' width='100%'/>
+<img src='https://s9.gifyu.com/images/download-removebg-previeweb66c2915f62c21e.png' width='100%'/>
 
 
 [![NPM](https://img.shields.io/npm/v/picload.svg)](https://www.npmjs.com/package/picload) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -243,4 +243,4 @@ const myImg = React.useRef(null)
 <hr>
 
 ### Sample
-![](http://upir.ir/images/3nyke7ypynttp63xwxx3.gif)
+![](https://s3.gifyu.com/images/sample7c40249c75346b55.gif)
